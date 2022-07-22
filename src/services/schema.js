@@ -1,5 +1,5 @@
 import yup from "./yupGlobal";
-const schema = yup.object().shape({
+export const ownerSchema = yup.object().shape({
   firstName: yup
     .string()
     .required("First name is required")
@@ -28,6 +28,10 @@ const schema = yup.object().shape({
     .required("Monthly savings is required")
     .onlyNumber("Monthly savings must be only numbers")
     .min(6, "Monthly savings must be at least 100000 VND"),
+  
+});
+export const beneficiarySchema = yup.object().shape({
+
   beneficiaryFirstName: yup
     .string()
     .required("First name is required")
@@ -51,6 +55,4 @@ const schema = yup.object().shape({
     .onlyNumber("Phone number must be only numbers")
     .min(10, "Phone number must be 10 numbers")
     .max(10, "Phone number must be 10 numbers"),
-});
-
-export default schema;
+})

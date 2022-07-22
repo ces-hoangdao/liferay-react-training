@@ -1,6 +1,5 @@
 import axios from "axios";
-const { REACT_APP_LIFERAY_API = window.location.origin } = process.env;
-
+const REACT_APP_LIFERAY_API = window.location.origin;
 
 export const getLiferayAuthenticationToken = () => {
   try {
@@ -17,7 +16,7 @@ export const getLiferayAuthenticationToken = () => {
 
 const baseFetch = async (
   url,
-  { body, method = "GET", contentType = "application/json" } = {}
+  { body, method = "get", contentType = "application/json" } = {}
 ) => {
   let headers = new Headers({
     "x-csrf-token": getLiferayAuthenticationToken(),
@@ -36,21 +35,22 @@ const baseFetch = async (
     headers.append("Content-Type", "application/json");
     body = body && JSON.stringify(body);
   }
-  const response = axios.post(apiPath + "/" + url, {
-    body,
-    headers: headers,
+  const response = await axios({
     method,
+    url: apiPath + "/" + url,
+    data: body,
+    headers: headers,
   });
   const data = await response.json();
   return { data };
 };
 
 const LiferayFetchAPI = {
-  delete: (url) => baseFetch(url, { method: "DELETE" }),
+  delete: (url) => baseFetch(url, { method: "delete" }),
   get: (url) => baseFetch(url),
-  patch: (url, options) => baseFetch(url, { ...options, method: "PATCH" }),
-  post: (url, options) => baseFetch(url, { ...options, method: "POST" }),
-  put: (url, options) => baseFetch(url, { ...options, method: "PUT" }),
+  patch: (url, options) => baseFetch(url, { ...options, method: "patch" }),
+  post: (url, options) => baseFetch(url, { ...options, method: "post" }),
+  put: (url, options) => baseFetch(url, { ...options, method: "put" }),
 };
 
 export { REACT_APP_LIFERAY_API };

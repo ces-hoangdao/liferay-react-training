@@ -33,7 +33,6 @@ const Contact = () => {
   const goPrev = () => dispatch(formActions.goPrev());
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <h1>Confirm contract</h1>
       <div className="detail-contract">
         <p>Please see the detailed contract</p>
         <a href="https://www.chubb.com/content/dam/chubb-sites/chubb-com/personal/future-asset-management-universal-life/documents/pdf/easset_upload_file46289_1304437_e.pdf">

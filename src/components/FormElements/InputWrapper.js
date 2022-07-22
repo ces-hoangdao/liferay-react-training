@@ -1,13 +1,11 @@
-import { useForm, Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { Input } from "@mui/material";
-import { yupResolver } from "@hookform/resolvers/yup";
-import schema from "../../services/schema";
 const InputWrapper = (props) => {
   const {
     register,
     control,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema), mode: "onChange" });
+  } = useFormContext();
   const elementName = props.name;
   const label = props.label;
   const data = props.data;
@@ -37,7 +35,7 @@ const InputWrapper = (props) => {
         )}
       />
       {errors[elementName] && (
-        <p className="error">{errors[elementName].message}</p>
+        <div className="error">{errors[elementName].message}</div>
       )}
     </div>
   );

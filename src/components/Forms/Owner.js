@@ -1,9 +1,13 @@
 import { formActions } from "../../redux/form-slice";
 import { useDispatch, useSelector } from "react-redux";
 import InputWrapper from "../FormElements/InputWrapper";
+import { useForm, FormProvider } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ownerSchema } from "../../services/schema";
 
 const Owner = () => {
   const dispatch = useDispatch();
+  const methods = useForm({ resolver: yupResolver(ownerSchema), mode: "all" });
   const data = useSelector((state) => state.form.data);
   const onSubmit = () => {
     dispatch(formActions.goNext());
@@ -15,9 +19,8 @@ const Owner = () => {
   };
 
   return (
-    <form className="form">
-      <h1>Owner Information</h1>
-      <div className="form-row">
+    <FormProvider {...methods}>
+      <form className="form" onSubmit={methods.handleSubmit(onSubmit)}>
         <InputWrapper
           label="First Name"
           name="firstName"
@@ -38,8 +41,7 @@ const Owner = () => {
           data={data}
           required={true}
         />
-      </div>
-      <div className="form-row">
+
         <InputWrapper
           label="Birthday"
           name="birthday"
@@ -55,8 +57,7 @@ const Owner = () => {
           data={data}
           required={true}
         />
-      </div>
-      <div className="form-row">
+
         <InputWrapper
           label="Phone Number"
           name="phoneNumber"
@@ -71,13 +72,14 @@ const Owner = () => {
           data={data}
           required={true}
         />
-      </div>
-      <div className="btn-group" id="group-one">
-        <button className="btn btn-submit" onClick={onSubmit}>
-          Continue
-        </button>
-      </div>
-    </form>
+
+        <div className="btn-group" id="group-one">
+          <button className="btn btn-submit" type="submit">
+            Continue
+          </button>
+        </div>
+      </form>
+    </FormProvider>
   );
 };
 

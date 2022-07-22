@@ -2,9 +2,16 @@ import { formActions } from "../../redux/form-slice";
 import { useDispatch, useSelector } from "react-redux";
 import InputWrapper from "../FormElements/InputWrapper";
 import SelectInput from "../FormElements/Select";
+import { useForm, FormProvider } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { beneficiarySchema } from "../../services/schema";
 
 const Beneficiary = () => {
   const dispatch = useDispatch();
+  const methods = useForm({
+    resolver: yupResolver(beneficiarySchema),
+    mode: "all",
+  });
   const data = useSelector((state) => state.form.data);
   const handleChange = (e) => {
     dispatch(
@@ -16,16 +23,16 @@ const Beneficiary = () => {
   };
   const goPrev = () => dispatch(formActions.goPrev());
   return (
-    <form className="form">
-      <h1>Beneficiary Information</h1>
-      <SelectInput
-        data={data}
-        label="Relationship with me"
-        name="relationShip"
-        handleChange={handleChange}
-        required={true}
-      />
-      <div className="form-row">
+    <FormProvider {...methods}>
+      <form className="form" onSubmit={methods.handleSubmit(onSubmit)}>
+        <SelectInput
+          data={data}
+          label="Relationship with me"
+          name="relationShip"
+          handleChange={handleChange}
+          required={true}
+        />
+
         <InputWrapper
           label="First Name"
           name="beneficiaryFirstName"
@@ -46,8 +53,6 @@ const Beneficiary = () => {
           data={data}
           required={true}
         />
-      </div>
-      <div className="form-row">
         <InputWrapper
           label="Birthday"
           name="beneficiaryBirthday"
@@ -63,24 +68,25 @@ const Beneficiary = () => {
           data={data}
           required={true}
         />
-      </div>
-      <InputWrapper
-        label="Phone Number"
-        name="beneficiaryPhoneNumber"
-        handleChange={handleChange}
-        data={data}
-        required={true}
-      />
 
-      <div className="btn-group">
-        <button className="btn btn-prev" onClick={goPrev}>
-          Previous
-        </button>
-        <button className="btn btn-submit" onClick={onSubmit}>
-          Continue
-        </button>
-      </div>
-    </form>
+        <InputWrapper
+          label="Phone Number"
+          name="beneficiaryPhoneNumber"
+          handleChange={handleChange}
+          data={data}
+          required={true}
+        />
+
+        <div className="btn-group">
+          <button className="btn btn-prev" onClick={goPrev}>
+            Previous
+          </button>
+          <button className="btn btn-submit" type="submit">
+            Continue
+          </button>
+        </div>
+      </form>
+    </FormProvider>
   );
 };
 

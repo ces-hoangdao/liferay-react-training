@@ -1,13 +1,12 @@
-import { useForm, Controller } from "react-hook-form";
+import { Controller,useFormContext } from "react-hook-form";
 import { Select, MenuItem } from "@mui/material";
-import { yupResolver } from "@hookform/resolvers/yup";
-import schema from "../../services/schema";
+
 
 const SelectInput = (props) => {
-  const { register, control } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
+  const {
+    register,
+    control,
+  } = useFormContext();
   const label = props.label;
   const elementName = props.name;
   const data = props.data;
