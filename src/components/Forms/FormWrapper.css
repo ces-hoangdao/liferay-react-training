@@ -1,0 +1,108 @@
+.form {
+  border-style: none;
+  padding: 20px 30px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline: auto;
+  margin-top: 40px;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-area label {
+  font-size: 16px;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.required label::after {
+  color: #ea6136;
+  content: "*";
+  font-size: 0.813rem;
+  position: relative;
+  top: -5px;
+  margin-left: 2px;
+}
+
+.input-area input,
+select {
+  padding: 11px 16px;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+  background-color: #fff;
+  border-color: #afafb1;
+}
+
+.MuiInput-root::before{
+  border-bottom: 0 !important;
+}
+
+.input-area input:focus,
+select:focus {
+  border-color: #a8c4ff;
+  outline: 0;
+  color: #5f6167;
+  box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #a8c4ff;
+}
+
+.btn {
+  padding: 16px 30px;
+  border-radius: 4px;
+  max-width: 200px;
+  width: 100%;
+  border: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#group-one {
+  justify-content: flex-end;
+}
+
+.btn-submit {
+  background-color: #ffcb5d;
+}
+
+.btn-submit:hover {
+  background-color: #ffb30e;
+}
+
+.btn-prev {
+  background-color: #fff;
+  color: #7d7e85;
+}
+
+.btn-prev:hover {
+  border: 1px solid #7d7e85;
+}
+
+.error {
+  color: #ea6136;
+  font-size: 13px;
+  font-family: "Barlow", sans-serif;
+  margin-top: 5px;
+}
+
+.detail-contract
+ {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
