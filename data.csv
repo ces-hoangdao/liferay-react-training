@@ -1,0 +1,6 @@
+id,name,description,type,catalogId,createDate,modifiedDate,expirationDate,active
+product-1,Oto,desciption of product 1,simple,42602,2022-07-19T02:22:08.474Z,2022-07-19T02:22:08.474Z,2023-07-19T02:22:08.474Z,true
+product-2,Xemay 2,desciption of product 2,grouped,42602,2022-07-19T02:22:08.474Z,2022-07-19T02:22:08.474Z,2023-07-19T02:22:08.474Z,false
+product-3,xe dap 3,desciption of product 3,grouped,42602,2022-07-19T02:22:08.474Z,2022-07-19T02:22:08.474Z,2023-07-19T02:22:08.474Z,true
+product-4,xich lo 4,desciption of product 4,simple,42602,2022-07-19T02:22:08.474Z,2022-07-19T02:22:08.474Z,2023-07-19T02:22:08.474Z,true
+product-5,may bay ,desciption of product 5,simple,42602,2022-07-19T02:22:08.474Z,2022-07-19T02:22:08.474Z,2023-07-19T02:22:08.474Z,false
