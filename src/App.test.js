@@ -1,3 +1,2 @@
-import { screen } from "@testing-library/react";
-
-test("renders learn react link", () => {});
+// eslint-disable-next-line no-undef
+test("renders learn react link", () => {})

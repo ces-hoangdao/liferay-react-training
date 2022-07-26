@@ -1,93 +1,81 @@
-import { formActions } from "../../redux/form-slice";
-import { useDispatch, useSelector } from "react-redux";
-import InputWrapper from "../FormElements/InputWrapper";
-import SelectInput from "../FormElements/Select";
-import { useForm, FormProvider } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { beneficiarySchema } from "../../services/schema";
+import { useDispatch, useSelector } from "react-redux"
+import { formActions } from "../../redux/formSlice"
+import InputWrapper from "../FormElements/InputWrapper/InputWrapper"
+import SelectInput from "../FormElements/Select/Select"
+import { RELATIONSHIP_OPTION } from "../../constants/formConstants"
 
-const Beneficiary = () => {
-  const dispatch = useDispatch();
-  const methods = useForm({
-    resolver: yupResolver(beneficiarySchema),
-    mode: "all",
-  });
-  const data = useSelector((state) => state.form.data);
+function Beneficiary() {
+  const dispatch = useDispatch()
+
+  const data = useSelector((state) => state.form.data)
   const handleChange = (e) => {
     dispatch(
       formActions.setData({ fieldName: e.target.name, value: e.target.value })
-    );
-  };
-  const onSubmit = () => {
-    dispatch(formActions.goNext());
-  };
-  const goPrev = () => dispatch(formActions.goPrev());
+    )
+  }
+
   return (
-    <FormProvider {...methods}>
-      <form className="form" onSubmit={methods.handleSubmit(onSubmit)}>
-        <SelectInput
-          data={data}
-          label="Relationship with me"
-          name="relationShip"
-          handleChange={handleChange}
-          required={true}
-        />
+    <>
+      <SelectInput
+        value={data.relationShip}
+        label="Relationship with me"
+        name="relationShip"
+        handleChange={handleChange}
+        required
+        options={RELATIONSHIP_OPTION}
+      />
 
-        <InputWrapper
-          label="First Name"
-          name="beneficiaryFirstName"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
-        <InputWrapper
-          label="Middle Name"
-          name="beneficiaryMiddleName"
-          handleChange={handleChange}
-          data={data}
-        />
-        <InputWrapper
-          label="Last Name"
-          name="beneficiaryLastName"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
-        <InputWrapper
-          label="Birthday"
-          name="beneficiaryBirthday"
-          handleChange={handleChange}
-          data={data}
-          type="date"
-          required={true}
-        />
-        <InputWrapper
-          label="ID Card"
-          name="beneficiaryIDcard"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
+      <InputWrapper
+        label="First Name"
+        name="beneficiaryFirstName"
+        handleChange={handleChange}
+        value={data.beneficiaryFirstName}
+        required
+        type="text"
+      />
+      <InputWrapper
+        label="Middle Name"
+        name="beneficiaryMiddleName"
+        handleChange={handleChange}
+        value={data.beneficiaryMiddleName}
+        required={false}
+        type="text"
+      />
+      <InputWrapper
+        label="Last Name"
+        name="beneficiaryLastName"
+        handleChange={handleChange}
+        value={data.beneficiaryLastName}
+        required
+        type="text"
+      />
+      <InputWrapper
+        label="Birthday"
+        name="beneficiaryBirthday"
+        handleChange={handleChange}
+        value={data.beneficiaryBirthday}
+        type="date"
+        required
+      />
+      <InputWrapper
+        label="ID Card"
+        name="beneficiaryIDcard"
+        handleChange={handleChange}
+        value={data.beneficiaryIDcard}
+        required
+        type="text"
+      />
 
-        <InputWrapper
-          label="Phone Number"
-          name="beneficiaryPhoneNumber"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
+      <InputWrapper
+        label="Phone Number"
+        name="beneficiaryPhoneNumber"
+        handleChange={handleChange}
+        value={data.beneficiaryPhoneNumber}
+        required
+        type="text"
+      />
+    </>
+  )
+}
 
-        <div className="btn-group">
-          <button className="btn btn-prev" onClick={goPrev}>
-            Previous
-          </button>
-          <button className="btn btn-submit" type="submit">
-            Continue
-          </button>
-        </div>
-      </form>
-    </FormProvider>
-  );
-};
-
-export default Beneficiary;
+export default Beneficiary

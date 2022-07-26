@@ -1,86 +1,77 @@
-import { formActions } from "../../redux/form-slice";
-import { useDispatch, useSelector } from "react-redux";
-import InputWrapper from "../FormElements/InputWrapper";
-import { useForm, FormProvider } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { ownerSchema } from "../../services/schema";
+import { useDispatch, useSelector } from "react-redux"
+import { formActions } from "../../redux/formSlice"
+import InputWrapper from "../FormElements/InputWrapper"
 
-const Owner = () => {
-  const dispatch = useDispatch();
-  const methods = useForm({ resolver: yupResolver(ownerSchema), mode: "all" });
-  const data = useSelector((state) => state.form.data);
-  const onSubmit = () => {
-    dispatch(formActions.goNext());
-  };
+function Owner() {
+  const dispatch = useDispatch()
+  const data = useSelector((state) => state.form.data)
   const handleChange = (e) => {
     dispatch(
       formActions.setData({ fieldName: e.target.name, value: e.target.value })
-    );
-  };
-
+    )
+  }
   return (
-    <FormProvider {...methods}>
-      <form className="form" onSubmit={methods.handleSubmit(onSubmit)}>
-        <InputWrapper
-          label="First Name"
-          name="firstName"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
-        <InputWrapper
-          label="Middle Name"
-          name="middleName"
-          handleChange={handleChange}
-          data={data}
-        />
-        <InputWrapper
-          label="Last Name"
-          name="lastName"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
+    <>
+      <InputWrapper
+        label="First Name"
+        name="firstName"
+        handleChange={handleChange}
+        value={data.firstName}
+        required
+        type="text"
+      />
+      <InputWrapper
+        label="Middle Name"
+        name="middleName"
+        handleChange={handleChange}
+        value={data.middleName}
+        required={false}
+        type="text"
+      />
+      <InputWrapper
+        label="Last Name"
+        name="lastName"
+        handleChange={handleChange}
+        value={data.lastName}
+        required
+        type="text"
+      />
 
-        <InputWrapper
-          label="Birthday"
-          name="birthday"
-          handleChange={handleChange}
-          data={data}
-          type="date"
-          required={true}
-        />
-        <InputWrapper
-          label="ID Card"
-          name="IDcard"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
+      <InputWrapper
+        label="Birthday"
+        name="birthday"
+        handleChange={handleChange}
+        value={data.birthday}
+        type="date"
+        required
+      />
+      <InputWrapper
+        label="ID Card"
+        name="iDcard"
+        handleChange={handleChange}
+        value={data.iDcard}
+        required
+        type="text"
+      />
 
-        <InputWrapper
-          label="Phone Number"
-          name="phoneNumber"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
-        <InputWrapper
-          label="Monthly Saving"
-          name="monthlySaving"
-          handleChange={handleChange}
-          data={data}
-          required={true}
-        />
+      <InputWrapper
+        label="Phone Number"
+        name="phoneNumber"
+        handleChange={handleChange}
+        value={data.phoneNumber}
+        required
+        type="text"
+      />
+      <InputWrapper
+        label="Monthly Saving"
+        name="monthlySaving"
+        handleChange={handleChange}
+        value={data.monthlySaving}
+        required
+        type="text"
+      />
+    </>
+  )
+}
 
-        <div className="btn-group" id="group-one">
-          <button className="btn btn-submit" type="submit">
-            Continue
-          </button>
-        </div>
-      </form>
-    </FormProvider>
-  );
-};
-
-export default Owner;
+export default Owner

@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:react/jsx-runtime",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/no-cycle": "off",
+    "no-restricted-exports": "off",
+    "react/no-array-index-key": "off",
+    "react/forbid-prop-types": "off",
+    "no-param-reassign": "off",
+    "react/jsx-props-no-spreading": "off",
+    "func-names": "off"
+  }
+}

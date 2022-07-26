@@ -1,30 +1,26 @@
-import "./App.css";
-import { Container } from "@mui/material";
-import FormWrapper from "./components/Forms/FormWrapper";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import { useSelector } from "react-redux";
+import { Container, ThemeProvider } from "@mui/material"
+import { Provider } from "react-redux"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import theme from "./config/themeConfig"
+import store from "./redux/store"
+import { ROUTES } from "./constants/routeConstants"
 
-const steps = [
-  "Owner Information",
-  "Beneficiary Information",
-  "Confirm Contract",
-];
 function App() {
-  const step = useSelector((state) => state.form.step);
   return (
-    <Container>
-      <Stepper activeStep={step - 1} alternativeLabel className="Stepper">
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      <FormWrapper />
-    </Container>
-  );
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Container>
+          <Router>
+            <Routes>
+              {ROUTES.map((route) => (
+                <Route key={route.path} path={route.path} element={route.element} />
+              ))}
+            </Routes>
+          </Router>
+        </Container>
+      </ThemeProvider>
+    </Provider>
+  )
 }
 
-export default App;
+export default App

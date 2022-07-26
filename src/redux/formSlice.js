@@ -1,19 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { STEP_FOUR, STEP_ONE } from "../constants/StepConstants";
+import { createSlice } from "@reduxjs/toolkit"
+import { STEPS } from "../constants/formConstants"
 
 const formSlice = createSlice({
   name: "form",
   initialState: {
-    step: 1,
+    step: 0,
     data: {
       firstName: "",
       middleName: "",
       lastName: "",
       birthday: "",
-      IDcard: "",
+      iDcard: "",
       phoneNumber: "",
       monthlySaving: "",
-      relationShip: "spouse",
+      relationShip: "",
       beneficiaryFirstName: "",
       beneficiaryMiddleName: "",
       beneficiaryLastName: "",
@@ -24,18 +24,18 @@ const formSlice = createSlice({
   },
   reducers: {
     setData: (state, { payload: { fieldName, value } }) => {
-      state.data[fieldName] = value;
+      state.data[fieldName] = value
     },
     goNext: (state) => {
-      if (state.step === STEP_FOUR) return;
-      state.step += 1;
+      if (state.step === STEPS.length - 1) return
+      state.step += 1
     },
     goPrev: (state) => {
-      if (state.step === STEP_ONE) return;
-      state.step -= 1;
+      if (state.step === 0) return
+      state.step -= 1
     },
   },
-});
+})
 
-export const formActions = formSlice.actions;
-export default formSlice.reducer;
+export const formActions = formSlice.actions
+export default formSlice.reducer
