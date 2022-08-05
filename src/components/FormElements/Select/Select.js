@@ -19,7 +19,9 @@ function SelectInput(props) {
     control,
     formState: { errors },
   } = useFormContext()
-  if (options.length === 0) return null
+  const isOptionHasValue = options?.length
+  if (!isOptionHasValue) return null
+
   return (
     <Box
       sx={{

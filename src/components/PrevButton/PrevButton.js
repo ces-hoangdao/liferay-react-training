@@ -5,12 +5,12 @@ import { formActions } from "../../redux/formSlice"
 
 const CustomPrevButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.background,
-  color: theme.palette.button.secondary.main,
+  color: theme.palette.button.secondary.dark,
   padding: 16,
   fontWeight: theme.typography.fontWeightBold,
   minWidth: 180,
   "&:hover": {
-    border: `1px solid ${theme.palette.button.secondary.main}`,
+    border: `1px solid ${theme.palette.button.secondary.dark}`,
   },
 }))
 
