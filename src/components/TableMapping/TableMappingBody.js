@@ -1,7 +1,7 @@
 import { TableBody, TableRow } from "@mui/material"
 import { useSelector } from "react-redux"
-import TableCellCSS from "./TableMappingStyle"
-import Select from "../Select/Select"
+import TableCellCustom from "./TableMappingStyle"
+import Select from "../Select"
 
 function TableMappingBody() {
   const headers = useSelector((state) => state.data.headers)
@@ -9,10 +9,10 @@ function TableMappingBody() {
     <TableBody>
       {headers.map((head, index) => (
         <TableRow key={index}>
-          <TableCellCSS>{head}</TableCellCSS>
-          <TableCellCSS>
+          <TableCellCustom>{head}</TableCellCustom>
+          <TableCellCustom>
             <Select index={index} />
-          </TableCellCSS>
+          </TableCellCustom>
         </TableRow>
       ))}
     </TableBody>

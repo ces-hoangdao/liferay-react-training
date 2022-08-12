@@ -23,4 +23,10 @@ const MAPPING = [
   { headerIndex: 8, fieldMapping: "" },
 ]
 
-export { FILE_TYPES, PRODUCT_FIELD_MAPPING, MAPPING }
+const SERVICE_PATH = {
+  importProductURL: "/o/headless-commerce-admin-catalog/v1.0/products/batch",
+}
+
+const ERROR_DURATION = 5000
+
+export { FILE_TYPES, PRODUCT_FIELD_MAPPING, MAPPING, SERVICE_PATH, ERROR_DURATION }

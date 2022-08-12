@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import "./DragDropBox.css"
 import InputFile from "../InputFile"
+import { ERROR_DURATION } from "../../constants/constants"
 
 function DragDropBox() {
   const [error, setError] = useState()
@@ -10,7 +10,7 @@ function DragDropBox() {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setError("")
-    }, [5000])
+    }, [ERROR_DURATION])
     return () => clearTimeout(timeoutId)
   }, [error])
 

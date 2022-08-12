@@ -11,8 +11,7 @@ function Select({ index }) {
       dataActions.setMapping({ index: indexHeader, fieldMapping: e.target.value })
     )
   }
-  const isOptionHasValue = options?.length
-  if (!isOptionHasValue) return null
+  if (!options?.length) return null
   return (
     <SelectMui
       sx={{ width: 200 }}

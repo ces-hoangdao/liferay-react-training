@@ -3,8 +3,8 @@ import { Alert, Button, styled } from "@mui/material"
 import { useState, useEffect } from "react"
 import DragDropBox from "../components/DragDropBox"
 import TableMapping from "../components/TableMapping"
-import UploadProduct from "../services/liferayApi"
-import mappingData from "../helper/utils"
+import importProducts from "../services/liferayApi"
+import mappingData from "../helper/productHelpers"
 
 const CustomButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(2),
@@ -15,7 +15,7 @@ const CustomButton = styled(Button)(({ theme }) => ({
 }))
 
 function ImportProduct() {
-  const data = useSelector((state) => state.data.data)
+  const data = useSelector((state) => state.data.productsInfo)
   const mapping = useSelector((state) => state.data.mapping)
   const hasData = data.length > 0
 
@@ -30,7 +30,7 @@ function ImportProduct() {
   const importData = async () => {
     const body = mappingData(data, mapping)
     try {
-      await UploadProduct(body)
+      await importProducts(body)
     } catch (err) {
       setError(err.message)
     }

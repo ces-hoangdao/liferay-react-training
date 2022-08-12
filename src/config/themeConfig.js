@@ -9,6 +9,10 @@ const theme = createTheme({
     table: {
       main: "94B49F",
     },
+    input: {
+      main: "#FCF8E8",
+      secondary: "#94B49F",
+    },
   },
 })
 

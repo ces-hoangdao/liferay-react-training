@@ -1,7 +1,8 @@
 import apiConfig from "./apiConfig"
+import { SERVICE_PATH } from "../constants/constants"
 
-const UploadProduct = async (body) => {
-  apiConfig.post("/o/headless-commerce-admin-catalog/v1.0/products/batch", body)
+const importProducts = async (body) => {
+  apiConfig.post(SERVICE_PATH.importProductURL, body)
 }
 
-export default UploadProduct
+export default importProducts

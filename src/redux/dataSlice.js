@@ -4,14 +4,14 @@ import { PRODUCT_FIELD_MAPPING, MAPPING } from "../constants/constants"
 const dataSlice = createSlice({
   name: "data",
   initialState: {
-    data: [],
+    productsInfo: [],
     headers: [],
     mapping: MAPPING,
     options: PRODUCT_FIELD_MAPPING,
   },
   reducers: {
     setData: (state, action) => {
-      state.data = action.payload
+      state.productsInfo = action.payload
     },
     setHeaders: (state, action) => {
       state.headers = action.payload

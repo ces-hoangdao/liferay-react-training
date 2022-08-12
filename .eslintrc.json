@@ -26,6 +26,7 @@
     "no-param-reassign": "off",
     "react/jsx-props-no-spreading": "off",
     "func-names": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "import/prefer-default-export": "off"
   }
 }

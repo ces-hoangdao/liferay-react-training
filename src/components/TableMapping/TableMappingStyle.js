@@ -1,6 +1,6 @@
 import { TableCell, tableCellClasses, styled } from "@mui/material"
 
-const TableCellCSS = styled(TableCell)(({ theme }) => ({
+const TableCellCustom = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     padding: 5,
     fontSize: "14px",
@@ -16,4 +16,4 @@ const TableCellCSS = styled(TableCell)(({ theme }) => ({
   },
 }))
 
-export default TableCellCSS
+export default TableCellCustom

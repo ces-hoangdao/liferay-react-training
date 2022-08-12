@@ -1,11 +1,11 @@
 import { TableHead, TableRow, Table } from "@mui/material"
 import { useSelector } from "react-redux"
 import TableMappingBody from "./TableMappingBody"
-import TableCellCSS from "./TableMappingStyle"
+import TableCellCustom from "./TableMappingStyle"
 
 function TableMapping() {
-  const data = useSelector((state) => state.data.data)
-  if (data.length === 0) return null
+  const data = useSelector((state) => state.data.productsInfo)
+  if (!data?.length) return null
   return (
     <div>
       <Table
@@ -15,8 +15,8 @@ function TableMapping() {
       >
         <TableHead>
           <TableRow>
-            <TableCellCSS>Fields</TableCellCSS>
-            <TableCellCSS>Mapping</TableCellCSS>
+            <TableCellCustom>Fields</TableCellCustom>
+            <TableCellCustom>Mapping</TableCellCustom>
           </TableRow>
         </TableHead>
         <TableMappingBody />

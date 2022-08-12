@@ -3,6 +3,7 @@ import Papa from "papaparse"
 import { useDispatch } from "react-redux"
 import { FILE_TYPES } from "../../constants/constants"
 import { dataActions } from "../../redux/dataSlice"
+import { Container } from "./InputStyle"
 
 function InputFile(handleError) {
   const dispatch = useDispatch()
@@ -11,13 +12,13 @@ function InputFile(handleError) {
     Papa.parse(fileUpload, {
       complete: (results) => {
         dispatch(dataActions.setHeaders(results.data[0]))
-        dispatch(dataActions.setData(results.data.slice(1, 6)))
+        dispatch(dataActions.setData(results.data.slice(1, results.data.length - 1)))
       },
     })
   }
 
   return (
-    <div className="input-file">
+    <Container>
       <FileUploader
         label="Upload or drop file CSV right here"
         onTypeError={handleError}
@@ -26,7 +27,7 @@ function InputFile(handleError) {
         types={FILE_TYPES}
         classes="drop-zone"
       />
-    </div>
+    </Container>
   )
 }
 
