@@ -1,0 +1,4 @@
+const REGEX_ONLY_LETTER = /^[a-zA-Z]+$/
+const REGEX_ONLY_NUMBER = /^[0-9]+$/
+
+export { REGEX_ONLY_NUMBER, REGEX_ONLY_LETTER }
