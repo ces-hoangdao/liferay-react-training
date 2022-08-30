@@ -3,12 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:react/jsx-runtime",
-    "prettier"
-  ],
+  "extends": ["plugin:react/recommended", "airbnb", "plugin:react/jsx-runtime", "prettier"],
   "overrides": [],
   "parserOptions": {
     "ecmaFeatures": {
@@ -26,6 +21,10 @@
     "react/forbid-prop-types": "off",
     "no-param-reassign": "off",
     "react/jsx-props-no-spreading": "off",
-    "func-names": "off"
+    "func-names": "off",
+    "import/no-extraneous-dependencies": "off",
+    "arrow-body-style": "off",
+    "react/function-component-definition": "off",
+    "import/prefer-default-export": "off"
   }
 }
