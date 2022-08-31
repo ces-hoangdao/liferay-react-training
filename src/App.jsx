@@ -1,9 +1,9 @@
-import { ThemeProvider } from '@mui/material'
-import { Provider } from 'react-redux'
-import './App.css'
-import store from './redux/store'
-import theme from './config/themeConfig'
-import Home from './container/Home'
+import { ThemeProvider } from '@mui/material';
+import { Provider } from 'react-redux';
+import './App.css';
+import store from './redux/store';
+import theme from './config/themeConfig';
+import Home from './container/Home';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Home />
       </ThemeProvider>
     </Provider>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -4,7 +4,7 @@ import { TextField } from '@mui/material'
 import { getAccounts } from '../../services/accountServices'
 import AutocompleteCustom from './AutocompleteCustom'
 
-function AccountPicker({ setSelected }) {
+function AccountPicker({ setSelected, selected }) {
   const [accounts, setAccounts] = useState([])
   useEffect(() => {
     getAccounts().then((res) => {
@@ -26,13 +26,12 @@ function AccountPicker({ setSelected }) {
       multiple
       id="tags-standard"
       options={accounts}
+      value={selected}
       onChange={onChange}
       getOptionLabel={(option) => option.Account}
       noOptionsText="No Account match"
       style={{ width: '100%' }}
-      renderInput={(params) => (
-        <TextField {...params} label="Account" variant="outlined" />
-      )}
+      renderInput={(params) => <TextField {...params} label="Account" variant="outlined" />}
     />
   )
 }
@@ -41,4 +40,5 @@ export default AccountPicker
 
 AccountPicker.propTypes = {
   setSelected: PropTypes.func.isRequired,
+  selected: PropTypes.arrayOf(PropTypes.object).isRequired,
 }

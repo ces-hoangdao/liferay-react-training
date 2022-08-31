@@ -1,4 +1,5 @@
 import DatePicker from 'react-datepicker'
+import { Box } from '@mui/system'
 import PropTypes from 'prop-types'
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -11,15 +12,17 @@ const DateRangePicker = ({ startDate, endDate, setEndDate, setStartDate }) => {
   }
 
   return (
-    <DatePicker
-      selected={today}
-      onChange={onChange}
-      selectsStart
-      startDate={startDate}
-      endDate={endDate}
-      selectsRange
-      maxDate={today}
-    />
+    <Box>
+      <DatePicker
+        selected={today}
+        onChange={onChange}
+        selectsStart
+        startDate={startDate}
+        endDate={endDate}
+        selectsRange
+        maxDate={today}
+      />
+    </Box>
   )
 }
 
